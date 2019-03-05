@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bcd40a3e-650d-46ef-aa93-41c0ae1101c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assign_strategies/strategies.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/layer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/algorithms_utils-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/dawid_skene-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/experiments-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/mv-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/mv_single_binary-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/truth_finder-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/truth_finder_single-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/algorithms_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/dawid_skene.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/experiments.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/mv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/mv_single_binary.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/truth_finder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/truth_finder_single.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart_stop.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,31 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#51#92#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/algorithms_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="17" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="17" />
+            <state relative-caret-position="209">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -50,6 +48,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -71,11 +70,6 @@
             <path>
               <item name="jobs-assignment-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="jobs-assignment-api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jobs-assignment-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jobs-assignment-api" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -128,12 +122,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551795684595</updated>
-      <workItem from="1551795686173" duration="1140000" />
+      <workItem from="1551795686173" duration="1631000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1140000" />
+    <option name="totallyTimeSpent" value="1631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="39" width="1587" height="920" extended-state="0" />
@@ -166,15 +160,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#51#92#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/algorithms_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -182,10 +167,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/smart_stop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3325">
+          <caret line="175" column="23" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
+          <folding>
+            <element signature="e#51#92#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parsers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        <state relative-caret-position="209">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

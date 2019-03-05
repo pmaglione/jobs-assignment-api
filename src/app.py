@@ -13,9 +13,9 @@ from assign_strategies.strategies import RandomStrategy
 
 app = Flask(__name__)
 
-db_path = os.environ['DB_PATH']
-db_port = os.environ['DB_PORT']
-db_name = os.environ['DB_NAME']
+db_path = os.getenv('DB_PATH') or 'localhost'
+db_port = os.getenv('DB_PORT') or 27017
+db_name = os.getenv('DB_NAME') or 'api'
 
 app.config["MONGO_URI"] = f"mongodb://{db_path}:{db_port}/{db_name}"
 mongo = PyMongo(app)
@@ -173,4 +173,4 @@ api.add_resource(Tasks, '/tasks/<int:job_id>/<int:worker_id>', endpoint='tasks')
 api.add_resource(Votes, '/votes/<int:job_id>/<int:worker_id>/<int:item_id>/<int:vote>', endpoint='votes')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False)
