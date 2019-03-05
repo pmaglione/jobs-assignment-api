@@ -5,10 +5,10 @@ from flask_pymongo import PyMongo
 import pandas as pd
 import os
 #import helpers.algorithms_utils as alg_utils
-from smart_stop import decision_function_bayes
-from model.model import PlatformCrowdJob, FigureEight
-from db.layer import CrowdJob, Item
-from assign_strategies.strategies import RandomStrategy
+from .smart_stop import decision_function_bayes
+from .model.model import PlatformCrowdJob, FigureEight
+from .db.layer import CrowdJob, Item
+from .assign_strategies.strategies import RandomStrategy
 
 
 app = Flask(__name__)

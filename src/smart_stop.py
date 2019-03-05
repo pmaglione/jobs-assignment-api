@@ -1,7 +1,7 @@
-import helpers.algorithms_utils as alg_utils
 import numpy as np
-from helpers.truth_finder import expectation_maximization
 from scipy.stats import binom
+from .helpers.truth_finder import expectation_maximization
+import src.helpers.algorithms_utils as alg_utils
 
 #hyperparameters
 drawing_simulations_amount = 50
