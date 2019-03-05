@@ -6,3 +6,5 @@ flask-pymongo
 pandas
 requests
 gunicorn
+numpy
+matplotlib
