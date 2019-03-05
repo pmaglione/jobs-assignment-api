@@ -3,3 +3,4 @@ flask_restful
 flask-restful-swagger
 requests
 flask-pymongo
+gunicorn
