@@ -93,5 +93,5 @@ class CrowdJob():
 
     def is_initial_reached(self):
         items = self.get_items()
-        return all(len(item['votes']) == self.job.initial_votes_num for item in items)
+        return all(len(item['votes']) == self.job['initial_votes_num'] for item in items)
 

@@ -4,6 +4,7 @@ from flask_restplus import Api, Resource, fields, Namespace
 from flask_pymongo import PyMongo
 import pandas as pd
 import os
+import json
 #import helpers.algorithms_utils as alg_utils
 from .smart_stop import decision_function_bayes
 from .model.model import PlatformCrowdJob, FigureEight
@@ -132,19 +133,29 @@ class Tasks(Resource):
 
         return jsonify(response)
 
+resource_fields = api.model('CrowdVote', {
+    'job_id': fields.Integer,
+    'worker_id': fields.String,
+    'item_id': fields.Integer,
+    'vote': fields.Integer
+})
+
 class Votes(Resource):
-    @api.doc(params={
-        'job_id': 'Job ID',
-        'worker_id': 'Worker Uuid',
-        'item_id': 'Item ID',
-        'vote': 'Vote'
-    })
-    def post(self, job_id, worker_id, item_id, vote):
+    @api.expect(resource_fields)
+    def post(self):
+        data = json.loads(request.data)
+
+        job_id = data['job_id']
+        worker_id = data['worker_id']
+        item_id = data['item_id']
+        vote = data['vote']
+
         crowd_job = CrowdJob(mongo, job_id)
         item = crowd_job.get_item_by_id(item_id)
         item['votes'][str(worker_id)] = vote
         crowd_job.update_item_votes(item_id, item['votes'])
-        crowd_job.free_item(item_id)  # change state to assigned
+        crowd_job.free_item(item_id) # change state to assigned
+
 
         #run stopping rule
         if crowd_job.is_initial_reached():
@@ -172,7 +183,7 @@ class Votes(Resource):
 
 api.add_resource(Jobs, '/jobs', endpoint='jobs')
 api.add_resource(Tasks, '/tasks/<int:job_id>/<string:worker_id>', endpoint='tasks')
-api.add_resource(Votes, '/votes/<int:job_id>/<string:worker_id>/<int:item_id>/<int:vote>', endpoint='votes')
+api.add_resource(Votes, '/votes', endpoint='votes')
 
 if __name__ == '__main__':
     app.run(debug=False)
