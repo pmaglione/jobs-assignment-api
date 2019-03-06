@@ -169,8 +169,8 @@ class Votes(Resource):
 
 
 api.add_resource(Jobs, '/jobs', endpoint='jobs')
-api.add_resource(Tasks, '/tasks/<int:job_id>/<int:worker_id>', endpoint='tasks')
-api.add_resource(Votes, '/votes/<int:job_id>/<int:worker_id>/<int:item_id>/<int:vote>', endpoint='votes')
+api.add_resource(Tasks, '/tasks/<int:job_id>/<string:worker_id>', endpoint='tasks')
+api.add_resource(Votes, '/votes/<int:job_id>/<string:worker_id>/<int:item_id>/<int:vote>', endpoint='votes')
 
 if __name__ == '__main__':
     app.run(debug=False)

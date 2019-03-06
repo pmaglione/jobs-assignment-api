@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bcd40a3e-650d-46ef-aa93-41c0ae1101c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assign_strategies/strategies.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/layer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/algorithms_utils-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/dawid_skene-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/experiments-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/mv-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/mv_single_binary-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/truth_finder-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/.ipynb_checkpoints/truth_finder_single-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/algorithms_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/dawid_skene.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/experiments.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/mv.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/mv_single_binary.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/truth_finder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/truth_finder_single.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/smart_stop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abstracts_f8_5_items.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/abstracts_f8_5_items.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api_app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +15,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
               <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/api_app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="171" column="49" selection-start-line="171" selection-start-column="49" selection-end-line="171" selection-end-column="49" />
+              <folding>
+                <element signature="e#51#92#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/smart_stop.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-332">
+              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -49,6 +55,8 @@
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/src/smart_stop.py" />
+        <option value="$PROJECT_DIR$/src/api_app.py" />
       </list>
     </option>
   </component>
@@ -70,6 +78,17 @@
             <path>
               <item name="jobs-assignment-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="jobs-assignment-api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jobs-assignment-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jobs-assignment-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jobs-assignment-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jobs-assignment-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assign_strategies" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -122,12 +141,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551795684595</updated>
-      <workItem from="1551795686173" duration="1631000" />
+      <workItem from="1551795686173" duration="2580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1631000" />
+    <option name="totallyTimeSpent" value="2580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="39" width="1587" height="920" extended-state="0" />
@@ -199,6 +218,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/layer.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assign_strategies/strategies.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smart_stop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-332">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api_app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="171" column="49" selection-start-line="171" selection-start-column="49" selection-end-line="171" selection-end-column="49" />
+          <folding>
+            <element signature="e#51#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
