@@ -1,4 +1,4 @@
-class Job():
+class Job:
     STATE_CREATED = "CREATED"
     STATE_FINISHED = "FINISHED"
 
@@ -12,9 +12,11 @@ class Job():
         self.title_field = title_field
         self.content_field = content_field
 
-class Item():
+
+class Item:
     STATE_FREE = "FREE"
     STATE_ASSIGNED = "ASSIGNED"
+    STATE_WAITING = "WAITING"
     STATE_FINISHED = "FINISHED"
 
     def __init__(self, job_id = None, item_id = None, attributes_names = None, item_values = None):
@@ -33,7 +35,8 @@ class Item():
         content_index = attributes_names.index(content_field)
         return values[content_index]
 
-class CrowdJob():
+
+class DBCrowdJob:
     def __init__(self, mongo, job_id):
         self.mongo = mongo
         self.job_id = job_id
@@ -51,8 +54,10 @@ class CrowdJob():
     def classification_fn(self):
         return self.job.classification_fn
 
-    def create_job(self, job_id, classification_threshold, cost_ratio, classification_fn, initial_votes_amount, title_field, content_field):
-        job = Job(job_id, classification_threshold, cost_ratio, classification_fn, initial_votes_amount, title_field, content_field)
+    def create_job(self, job_id, classification_threshold, cost_ratio, classification_fn,
+                   initial_votes_amount, title_field, content_field):
+        job = Job(job_id, classification_threshold, cost_ratio, classification_fn,
+                  initial_votes_amount, title_field, content_field)
         self.mongo.db.jobs.insert_one(job.__dict__)
 
     def create_items(self, attributes_names, items_values):
@@ -77,21 +82,44 @@ class CrowdJob():
         return self.mongo.db.items.find({'job_id': self.job_id, "state": state})
 
     def update_item_votes(self, internal_id, votes):
-        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id}, {"$set": {'votes': votes}}, upsert=False)
+        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id},
+                                       {"$set": {'votes': votes}}, upsert=False)
 
     def free_item(self, internal_id):
-        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id}, {"$set": {'state': Item.STATE_FREE}}, upsert=False)
+        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id},
+                                       {"$set": {'state': Item.STATE_FREE}}, upsert=False)
 
-    def assign_item(self, internal_id):
-        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id}, {"$set": {'state': Item.STATE_ASSIGNED}}, upsert=False)
+    def wait_item(self, internal_id):
+        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id},
+                                       {"$set": {'state': Item.STATE_WAITING}}, upsert=False)
 
     def finish_item(self, internal_id):
-        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id}, {"$set": {'state': Item.STATE_FINISHED}}, upsert=False)
+        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id},
+                                       {"$set": {'state': Item.STATE_FINISHED}}, upsert=False)
+
+    def assign_item(self, internal_id):
+        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id},
+                                       {"$set": {'state': Item.STATE_ASSIGNED}}, upsert=False)
+
+    def finish_item(self, internal_id):
+        self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id},
+                                       {"$set": {'state': Item.STATE_FINISHED}}, upsert=False)
 
     def get_job(self):
         return self.mongo.db.jobs.find_one({'job_id': self.job_id})
 
-    def is_initial_reached(self):
-        items = self.get_items()
-        return all(len(item['votes']) == self.job['initial_votes_num'] for item in items)
+    def is_in_initial_rounds(self):
+        items = self.get_items_by_state(Item.STATE_WAITING)
+        return any(len(item['votes']) < self.get_job_initial_votes_num() for item in items)
 
+    def get_job_initial_votes_num(self):
+        return int(self.job['initial_votes_num'])
+
+    def get_job_classification_threshold(self):
+        return float(self.job['classification_threshold'])
+
+    def get_job_cost_ratio(self):
+        return float(self.job['cost_ratio'])
+
+    def get_job_classification_fn(self):
+        return self.job['classification_fn']

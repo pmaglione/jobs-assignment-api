@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.stats import binom
-from .helpers.truth_finder import expectation_maximization
+from src.helpers.truth_finder import expectation_maximization
 import src.helpers.algorithms_utils as alg_utils
 
 #hyperparameters

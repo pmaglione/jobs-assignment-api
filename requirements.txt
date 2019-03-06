@@ -8,5 +8,4 @@ pandas
 requests
 gunicorn
 numpy
-matplotlib
 scipy
