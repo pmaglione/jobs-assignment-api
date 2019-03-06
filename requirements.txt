@@ -3,6 +3,7 @@ flask_restful
 flask-restful-swagger
 flask_restplus
 flask-pymongo
+flask-cors
 pandas
 requests
 gunicorn

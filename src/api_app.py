@@ -9,9 +9,11 @@ from .smart_stop import decision_function_bayes
 from .model.model import PlatformCrowdJob, FigureEight
 from .db.layer import CrowdJob, Item
 from .assign_strategies.strategies import RandomStrategy
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 db_path = os.getenv('DB_PATH') or 'localhost'
 db_port = os.getenv('DB_PORT') or 27017
