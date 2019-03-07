@@ -27,13 +27,19 @@ class Item:
         self.votes = {} #votes = {worker_id: vote,...}
         self.state = self.STATE_FREE
 
-    def get_title(self, title_field, attributes_names, values):
+    @staticmethod
+    def get_title(title_field, attributes_names, values):
         title_index = attributes_names.index(title_field)
         return values[title_index]
 
-    def get_content(self, content_field, attributes_names, values):
+    @staticmethod
+    def get_content(content_field, attributes_names, values):
         content_index = attributes_names.index(content_field)
         return values[content_index]
+
+    @staticmethod
+    def is_valid_vote(item, worker_id):
+        return item['state'] == Item.STATE_ASSIGNED and str(worker_id) not in item['votes'].keys()
 
 
 class DBCrowdJob:

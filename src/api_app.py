@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from flask_restplus import Api, Resource, fields
 from flask_pymongo import PyMongo
 from flask_cors import CORS
@@ -23,9 +23,8 @@ api_key = os.getenv('CROWD_API_KEY') or 'api_key'
 app.config["MONGO_URI"] = f"mongodb://{db_path}:{db_port}/{db_name}"
 mongo = PyMongo(app)
 
-api = Api(app, version='1.0', title='CrowdAI API', description='The CrowdAI API',
-          default ='crowdai', default_label='methods')
-
+api = Api(app, version='1.0', title='CrowdAI Adaptive Vote Management API',
+          default='crowdai', default_label='methods')
 
 
 class Jobs(Resource):
@@ -76,7 +75,8 @@ class Jobs(Resource):
         # crowd_job.collect_votes_results(crowd_job.multiple_job_id)
 
         response = {"message": "job finished"}
-        return jsonify(response)
+        return make_response(jsonify(response), 200)
+
 
 class Tasks(Resource):
     @api.doc(params={
@@ -100,7 +100,7 @@ class Tasks(Resource):
                          }
             response['items'].append(json_item)
 
-        return jsonify(response)
+        return make_response(jsonify(response), 200)
 
 
 resource_fields = api.model('CrowdVote', {
@@ -123,16 +123,21 @@ class Votes(Resource):
 
         db_job = DBCrowdJob(mongo, job_id)
         item = db_job.get_item_by_id(item_id)
-        item['votes'][str(worker_id)] = vote
-        db_job.update_item_votes(item_id, item['votes'])
-        db_job.wait_item(item_id)  # change state to waiting
 
-        # run stopping rule
-        platform_job = PlatformCrowdJob(FigureEight(api_key), job_id)
-        StopManagement.manage_round(db_job, platform_job)
+        if Item.is_valid_vote(item, worker_id):
+            item['votes'][str(worker_id)] = vote
+            db_job.update_item_votes(item_id, item['votes'])
+            db_job.wait_item(item_id)  # change state to waiting
 
-        response = {"message": "vote submitted"}
-        return jsonify(response)
+            # run stopping rule
+            platform_job = PlatformCrowdJob(FigureEight(api_key), job_id)
+            StopManagement.manage_round(db_job, platform_job)
+
+            response = make_response(jsonify({'message':'vote submitted'}), 200)
+        else:
+            response = make_response(jsonify({'message':'invalid vote'}), 400)
+
+        return response
 
 
 api.add_resource(Jobs, '/jobs', endpoint='jobs')
