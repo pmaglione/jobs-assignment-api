@@ -87,6 +87,7 @@ class Tasks(Resource):
         db_job = DBCrowdJob(mongo, job_id)
         free_items = db_job.get_items_by_state(Item.STATE_FREE)
         item = RandomStrategy().get_assignment(worker_id, free_items)  # different strategies can be set
+
         response = {'items': []}
         if bool(item):
             db_job.assign_item(item['internal_id'])  # change state to assigned
