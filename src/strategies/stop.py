@@ -8,8 +8,8 @@ class StopManagement:
     @staticmethod
     def manage_round(db_job, platform_job):
         if db_job.is_in_initial_rounds():  # still collecting initial votes in some
-            StopManagement.free_waiting_items(db_job)
-        else:
+            StopManagement.free_waiting_initial_items(db_job)
+        elif db_job.has_waiting_items_equal_votes_num():  # if all waiting items has same num of votes
             StopManagement.manage_stop(db_job, platform_job)
 
     @staticmethod
@@ -17,20 +17,16 @@ class StopManagement:
         items = db_job.get_items_by_state(Item.STATE_WAITING)
         total_votes = get_formatted_items_votes(items)
 
-        results = decision_function_bayes(items.count(),
+        results = decision_function_bayes(len(items),
                                           total_votes,
                                           db_job.get_job_classification_threshold(),
                                           db_job.get_job_cost_ratio(),
                                           AggregationFunctionFactory.get_function(db_job.get_job_classification_fn()))
 
-        print(results)
-
         # True = must continue, False = stop
         continue_amount = len([1 for i, v in results.items() if v == True])
         platform_job.set_max_votes(1)  # set max 1 vote per item
         platform_job.create_dummy_items(continue_amount)
-
-        print(f"continue: {continue_amount}")
 
         for item_id, item_decision in results.items():
             if item_decision:
@@ -39,7 +35,7 @@ class StopManagement:
                 db_job.finish_item(item_id)  # False = stop, set item finished
 
     @staticmethod
-    def free_waiting_items(db_job):
+    def free_waiting_initial_items(db_job):
         items = db_job.get_items_by_state(Item.STATE_WAITING)
         for item in items:
             if len(item['votes']) < db_job.get_job_initial_votes_num():  # free items if votes < initial

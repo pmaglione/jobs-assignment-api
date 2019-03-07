@@ -76,10 +76,13 @@ class DBCrowdJob:
         return self.mongo.db.items.find_one({'job_id': self.job_id, "internal_id": internal_id})
 
     def get_items(self):
-        return self.mongo.db.items.find({'job_id': self.job_id})
+        return list(self.mongo.db.items.find({'job_id': self.job_id}))
 
     def get_items_by_state(self, state):
-        return self.mongo.db.items.find({'job_id': self.job_id, "state": state})
+        return list(self.mongo.db.items.find({'job_id': self.job_id, "state": state}))
+
+    def get_active_items(self):
+        return list(self.mongo.db.items.find({"$and": [{"job_id": self.job_id}, {"state": {"$ne": Item.STATE_FINISHED}}]}))
 
     def update_item_votes(self, internal_id, votes):
         self.mongo.db.items.update_one({'job_id': self.job_id, 'internal_id': internal_id},
@@ -109,8 +112,15 @@ class DBCrowdJob:
         return self.mongo.db.jobs.find_one({'job_id': self.job_id})
 
     def is_in_initial_rounds(self):
-        items = self.get_items_by_state(Item.STATE_WAITING)
+        items = self.get_active_items()
         return any(len(item['votes']) < self.get_job_initial_votes_num() for item in items)
+
+    def has_waiting_items_equal_votes_num(self):
+        items = self.get_active_items()
+        max_votes_num = max([len(item['votes']) for item in items])
+        print(max_votes_num)
+        print([item['state'] for item in items])
+        return all(len(item['votes']) == max_votes_num for item in items)
 
     def get_job_initial_votes_num(self):
         return int(self.job['initial_votes_num'])
