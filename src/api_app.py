@@ -93,10 +93,10 @@ class Tasks(Resource):
             db_job.assign_item(item['internal_id'])  # change state to assigned
             json_item = {
                             "id": item['internal_id'],
-                            "title": Item().get_title(db_job.job['title_field'],
-                                                      item['attributes_names'], item['values']),
-                            "content": Item().get_content(db_job.job['content_field'],
-                                                          item['attributes_names'], item['values'])
+                            "title": Item.get_title(db_job.job['title_field'],
+                                                            item['attributes_names'], item['values']),
+                            "content": Item.get_content(db_job.job['content_field'],
+                                                            item['attributes_names'], item['values'])
                          }
             response['items'].append(json_item)
 

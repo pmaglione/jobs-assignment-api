@@ -27,8 +27,8 @@ class PlatformCrowdJob:
 
 class DummyItem:
     def __init__(self):
-        self.title = "Dummy title"
-        self.content = "Dummy content"
+        self.title = "Dummy title created via API"
+        self.content = "Dummy content created via API"
 
 
 class CrowdPlatform:

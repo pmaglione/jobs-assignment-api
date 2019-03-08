@@ -1,0 +1,102 @@
+@import "https://use.fontawesome.com/releases/v5.2.0/css/all.css";
+
+
+.cml.jsawesome {
+  padding-bottom: 3em;
+  padding-top: 3em;
+}
+
+.marker-target p {
+  /*cursor: copy;*/
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+@media screen and (min-height: 640px) {
+  .cml.jsawesome {
+    margin-top: 5em;
+    padding-bottom: 5em;
+    padding-top: 5em;
+    margin-bottom: 5em;
+  }
+
+  .marker-target p {
+    padding-bottom: 3em;
+    font-size: 1.2em;
+  }
+
+  .marker-target  {
+    min-height: 19em;
+  }
+
+  .marker-target.pattern-only ul {
+    padding-bottom: 2em;
+  }
+}
+
+@media screen and (min-height: 1040px) {
+  .marker-target  {
+    min-height: 21em;
+  }
+
+  .cml.jsawesome {
+    margin-top: 7em;
+    margin-bottom: 7em;
+  }
+}
+
+@media screen and (max-height: 530px) {
+  .cml.jsawesome {
+    padding-bottom: 0;
+    padding-top: 0.5em;
+  }
+
+  .marker-target p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 2040px) {
+  .cml.jsawesome {
+    margin-top: 6.5em;
+    padding-bottom: 6.5em;
+    padding-top: 6.5em;
+    margin-bottom: 6.5em;
+  }
+}
+
+
+.disable-manual .cml_row .reason_pattern, .disable-manual .cml_row .reason_pattern:focus {
+  height: 0;
+  width: 0;
+  overflow: auto;
+  border: 0px;
+  resize: none;
+  outline: none !important;
+  background: transparent;
+  color: transparent;
+
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+.disable-manual p {
+  margin-top: -30px;
+}
+
+.highlighted {
+  cursor: pointer;
+}
+
+.highlighted:hover:before {
+  color: white;
+  content: "×";
+  position: absolute;
+  padding-left: 2px;
+  padding-right: 2px;
+  background: black;
+  padding-left: 2px;
+}

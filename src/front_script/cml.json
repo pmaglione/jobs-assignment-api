@@ -1,0 +1,46 @@
+<div class="html-element-wrapper notranslate" translate="no">
+  <table data-eid="{{eid}}" id="table-{{eid}}" class="marker-target" style="width: 100%; border: 1px solid black;">
+    <tbody>
+      <tr>
+        <td colspan="2" style="width: 99.8825%; padding: 10px;">
+          <h2 id="title-{{eid}}">{{title}}</h2>
+          <br />
+          <p id="content-{{eid}}">
+            {{content}}
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+</div>
+
+<cml:radios name="in_out_radio" label="Does the paper describe a study or experiment that involves technology for online social interactions?" instructions="Remember, if there is technology involved, it should be for ONLINE interaction / communication." aggregation="agg" gold="true">
+  <cml:radio label="Yes" value="1"></cml:radio>
+  <cml:radio label="No" value="0"></cml:radio>
+</cml:radios>
+
+
+<cml:hidden name="worker_uuid"  value="..." validates="required" gold="false"></cml:hidden>
+<cml:hidden name="page_started_at" value="..." validates="required" gold="false"></cml:hidden>
+<cml:hidden name="page_started_at_string" value="..." validates="required" gold="false"></cml:hidden>
+<cml:hidden name="screen_width" value="..." validates="required" gold="false"></cml:hidden>
+<cml:hidden name="screen_height" value="..." validates="required" gold="false"></cml:hidden>
+
+<cml:hidden name="assigned_item" value="..." validates="required" gold="false"></cml:hidden>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
